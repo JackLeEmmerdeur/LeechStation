@@ -1,0 +1,6 @@
+app:
+  mode: "interactive"
+
+sftp:
+  homepath: "/home/sftpusers"
+  groupname: "sftpusers"
