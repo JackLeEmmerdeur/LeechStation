@@ -1,28 +1,20 @@
-# from lib.syscmd import pexpectthis
-# import pexpect
-#
-# c = pexpect.spawn("passwd naruto1")
-# try:
-# 	xoxo = c.expect("ein:", timeout=2)
-# 	c.sendline("asdf")
-# 	print(xoxo)
-# 	# c.expect("ein:", timeout=2)
-# 	# c.sendline("asdf")
-# except pexpect.EOF:
-# 	print("1")
-# except pexpect.TIMEOUT:
-# 	print("2")
-# except:
-# 	print("3")
-from classes.Station import Station
 from classes.Yaml import Yaml
 
 
 def main():
-	y = Yaml("./config.yaml")
-	# s = Station(y.get("sftp", "groupname"), y.get("sftp", "homepath"), y.get("app", "mode"))
+	# This enables you to add users only allowed
+	# to use sftp, each only able to read/write
+	# from/to their own jailed folder in
+	#    /home/SFTP_USERS_DIR/USER
+	# The script needs to modify the current
+	# sshd_config file and is not tested at all
+	# on different OS's.
+	# Use at own risk!
 
-	# - Alters /etc/ssh/sshd_config to use the above passed
+	y = Yaml("./config.yaml")
+	s = Station(y.get("sftp", "groupname"), y.get("sftp", "homepath"), y.get("app", "mode"))
+
+	# - Alters /estc/ssh/sshd_config to use the above passed
 	#   sftp-homepath as root for all sftp-users
 	# - Creates said sftp-homepath
 	# - Creates group for sftp-users
@@ -33,7 +25,7 @@ def main():
 	# s.uninstall()
 
 	# Checks if LeechStation modifications are installed
-	# s.assert_installation()
+	s.assert_installation()
 
 	# Add an sftp-user
 	# s.user_add("USERNAME", "PASSWORD")
@@ -43,7 +35,7 @@ def main():
 	# s.user_change_password()
 	# s.user_list()
 
-	# Misc service-methods (start,stop,status,
+	# Misc service-methods (start,stop,status)
 	# s.sshstart()
 
 
