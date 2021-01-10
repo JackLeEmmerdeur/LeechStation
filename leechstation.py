@@ -20,14 +20,32 @@ from classes.Yaml import Yaml
 
 def main():
 	y = Yaml("./config.yaml")
-	s = Station(y.get("sftp", "groupname"), y.get("sftp", "homepath"), y.get("app", "mode"))
-	# s.user_del("naruto")
+	# s = Station(y.get("sftp", "groupname"), y.get("sftp", "homepath"), y.get("app", "mode"))
+
+	# - Alters /etc/ssh/sshd_config to use the above passed
+	#   sftp-homepath as root for all sftp-users
+	# - Creates said sftp-homepath
+	# - Creates group for sftp-users
+	# s.install()
+
+	# Tries to remove the config-options added to /etc/ssh/sshd_config
+	# in Station.install(). Not guaranteed to work.
 	# s.uninstall()
-	# s.ssh_restart()
-	s.install()
-	s.assert_installation()
-	s.user_add("naruto", "password123")
-	s.user_list()
+
+	# Checks if LeechStation modifications are installed
+	# s.assert_installation()
+
+	# Add an sftp-user
+	# s.user_add("USERNAME", "PASSWORD")
+
+	# Misc sftp-user functions
+	# s.user_del("USERNAME")
+	# s.user_change_password()
+	# s.user_list()
+
+	# Misc service-methods (start,stop,status,
+	# s.sshstart()
+
 
 if __name__ == "__main__":
 	rc = 0
