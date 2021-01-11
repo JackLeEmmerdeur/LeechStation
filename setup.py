@@ -12,7 +12,7 @@ setup(
 	version='0.0.1',
 	description='User-based SFTP-configuration for the linux SSH-Service',
 	long_description='Adds a jailed user based SFTP-Configuration to an SSH-Server'
-	author='Dorkniel Holgerson',
+	author='Daniel Holgerson',
 	author_email='jackleemmerdeur@googlemail.com',
 	url='https://github.com/JackLeEmmerdeur/LeechStation',
 	install_requires=ir,

@@ -102,11 +102,16 @@ class Station:
 	def check_installation(self) -> bool:
 		sftpuserdir = ssh_config_get_userdir(self.sftpgroup)
 		if string_is_empty(sftpuserdir):
+			print("SFTP-Verzeichnis Einstellung ist ungueltig")
 			return False
 		if sftpuserdir != str(self.sftphomedir):
+			print("SFTP-Verzeichnis '{}' stimmt nicht mit config '{}' überein".format(sftpuserdir, str(self.sftphomedir)))
 			return False
 		p = Path(sftpuserdir)
-		return p.exists()
+		if not p.exists():
+			print("SFTP-Verzeichnis '{}' existiert nicht".format(str(p)))
+			return False
+		return True
 
 	def uninstall(self):
 		print("Deinstalliere eingeschränkte SFTP Umgebung")
