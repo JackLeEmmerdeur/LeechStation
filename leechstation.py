@@ -1,4 +1,5 @@
 from classes.Yaml import Yaml
+from classes.Station import Station
 
 
 def main():
