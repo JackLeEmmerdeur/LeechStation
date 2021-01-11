@@ -69,7 +69,8 @@ def ssh_config_get_userdir(sftpgroup: str) -> str:
 			return sftpuserdir[0:-3]
 		else:
 			return sftpuserdir
-
+	else:
+		print("No sftp-root-dir found in {}".format(sshdconfigpath))
 	return sftpuserdir
 
 
